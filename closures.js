@@ -12,7 +12,7 @@ const createCounter = () => {
 const counter = createCounter();
 counter.increaseCount();
 console.log(counter.getCount());
-// 1
+// 1 
 
 // Exercise:
 // This function should create an empty array of messages, and should then
@@ -20,7 +20,29 @@ console.log(counter.getCount());
 // - addMessage method that adds a message to the array
 // - getMessage(index) method that returns the message at index index
 
-const createMessageHolder = () => {};
+const createMessageHolder = () => {
+  // Initialize an empty array to store messages
+  const messages = [];
+
+  // Return an object with methods to manipulate messages
+  return {
+    // Method to add a message to the array
+    addMessage: (message) => {
+      messages.push(message);
+    },
+    
+    // Method to get a message at a specific index
+    getMessage: (index) => {
+      // Check if the index is valid
+      if (index >= 0 && index < messages.length) {
+        return messages[index];
+      } else {
+        return 'Invalid index';
+      }
+    },
+  };
+
+};
 
 // Test
 const messageHolder = createMessageHolder();
@@ -28,6 +50,9 @@ messageHolder.addMessage('Hello!');
 messageHolder.addMessage('Goodbye!');
 console.log(messageHolder.getMessage(0));
 // "Hello!""
+
+
+
 
 // Example: non-currying
 const addNumbers = function(num1, num2) {
@@ -50,12 +75,22 @@ console.log(addThree(9));
 console.log(addThree(41));
 // 44
 
+
+
+
+
 // Create a function createGreeting
 // - This should accept a single argument: greeting (i.e. "Hello")
 // This will return a function a function greet
 // - This accepts a single argument, name (i.e. "Matt")
 // - This function should return the greeting combined with the name, (i.e. "Hello Matt")
-const createGreeting = function(greeting) {};
+const createGreeting = function(greeting) {
+    // Return a function that takes a name and combines it with the greeting
+    return function (name) {
+      return `${greeting} ${name}`;
+    };
+
+};
 
 // Test
 const welcomeGreet = createGreeting('Welcome');
